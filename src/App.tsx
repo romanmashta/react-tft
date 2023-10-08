@@ -9,7 +9,11 @@ function App() {
   const [count, setCount] = useState(0)
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  useTftEspi(canvasRef);
+  useTftEspi((module) => {
+    const tft = new module.TFTSpi(536, 240, canvasRef.current?.id);
+    tft.init();
+    tft.draw();
+  }, canvasRef);
 
   return (
     <>
