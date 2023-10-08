@@ -11,8 +11,12 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tft-espi-wasm": "1.0.0"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
