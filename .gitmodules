@@ -1,0 +1,3 @@
+[submodule "packages/tft-espi-wasm"]
+	path = packages/tft-espi-wasm
+	url = git@github.com:romanmashta/tft-espi-wasm.git
