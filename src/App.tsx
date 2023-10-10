@@ -1,7 +1,9 @@
 import {useEffect, useRef, useState} from 'react'
 import './App.css'
 
-import {useTftEspi, Font, TFTSpi, TFTSprite} from 'tft-espi-wasm'
+import {useTftEspi, Font, TFTSpi, TFTSprite, TFT_BLACK, TFT_WHITE} from 'tft-espi-wasm'
+import {NotoSansBold36} from "./notoSansBold36.ts";
+import {NotoSansMonoSCB20} from "./notoSansMonoSCB20.ts";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,9 +11,11 @@ function App() {
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useTftEspi((module) => {
-    const tft = new module.TFTSpi(240, 536);
-    tft.init();
-    tft.fillScreen(0x0000);
+    //const tft = new module.TFTSpi(240, 536);
+    const tft = new module.TFTSprite();
+    // tft.setSwapBytes(1);
+    //tft.init();
+    tft.fillSprite(0xFFFF);
     setTft(tft);
 
     return () => {
@@ -19,14 +23,34 @@ function App() {
     }
   }, canvasRef);
 
+
   useEffect(() => {
     if (!tft) return;
+    const sprite = tft;
+    const fromTop = 38;
 
-    tft.drawString("Hello World!", 15, 10, Font.FONT2);
-    tft.drawString(`${count}`, 20, 50, Font.FONT4);
-    tft.drawRoundRect(10, 45, 50, 30, 3, 0xFFFF);
-    tft.drawLine(0, 100, 240, 100, 0x1F4F);
-    tft.drawLine(0, 200, 240, 200, 0x9F00);
+    sprite.fillSprite(TFT_BLACK);
+    sprite.setTextDatum(0);
+    sprite.loadFont(NotoSansBold36);
+    sprite.setTextColor(TFT_WHITE, TFT_BLACK);
+    sprite.drawString("GeoLocation",0,4);
+    sprite.unloadFont();
+
+    sprite.drawLine(0,30+fromTop,240,30+fromTop,0x8410);
+    sprite.drawLine(0,90+fromTop,240,90+fromTop,0x8410);
+    sprite.drawLine(0,150+fromTop,240,150+fromTop,0x8410);
+    sprite.drawLine(0,210+fromTop,180,210+fromTop,0x8410);
+    sprite.drawLine(0,390+fromTop,240,390+fromTop,0x8410);
+    sprite.drawLine(0,450+fromTop,240,450+fromTop,0x8410);
+
+    sprite.loadFont(NotoSansMonoSCB20);
+    sprite.setTextColor(0x5E9E, TFT_BLACK);
+    sprite.drawString("PUBLIC IP",0,10+fromTop);
+    sprite.drawString("COUNTRY",0,70+fromTop);
+    sprite.drawString("TIMEZONE",0,130+fromTop);
+    sprite.drawString("T0WN",0,190+fromTop);
+    sprite.drawString("REGION",0,370+fromTop);
+    sprite.drawString("PROVIDER",0,430+fromTop);
 
     tft.draw();
   }, [tft, count]);
