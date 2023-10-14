@@ -6,9 +6,34 @@ import {Latin_Hiragana_24} from "./latinHiragana24.ts";
 import {ScreenProps} from "./Display.tsx";
 import {useFrameCounter} from "./UseFrameCounter.tsx";
 
+import digitalFont from '../public/DigitalDisplayRegular-ODEO.ttf';
+import roboto from '../public/Roboto-Thin.ttf';
+import {buildVlwFont} from "tft-espi-wasm";
+import * as b from "buffer";
+
+
+
+const useFont = (fontUrl, size) => {
+  const [vlwFont, setVlwFont] = useState();
+
+  useEffect(() => {
+    const convertFont = (data) => {
+      const vlvFont = buildVlwFont(b.Buffer.from(data), size);
+      setVlwFont(vlvFont);
+    }
+    fetch(fontUrl)
+      .then((response) => response.arrayBuffer())
+      .then((data) => {
+        convertFont(data);
+      });
+  }, [fontUrl]);
+  return vlwFont;
+}
+
 export const GeoIp = ({display, sprite}: ScreenProps) => {
   const [data, setData] = useState<any>(null);
-  const frame = useFrameCounter();
+  const frame = useFrameCounter(25);
+  const font = useFont(digitalFont, 62);
 
   useEffect(() => {
     fetch('https://ipapi.co/json/')
@@ -93,14 +118,18 @@ export const GeoIp = ({display, sprite}: ScreenProps) => {
 
     sprite.setTextColor(0xEF5D, TFT_BLACK);
     sprite.drawString(dateMy, 0, 270 + fromTop, 4);
-    sprite.drawString(timeMy, 0, 296 + fromTop, 7);
+
+    sprite.loadFont(font);
+    sprite.drawString(timeMy, 0, 296 + fromTop);
+    sprite.unloadFont();
+
     sprite.drawString(String(httpCode2), 0, 520, 2);
     sprite.setTextDatum(2);
     sprite.drawString(local_ip, 240, 520, 2);
 
     display.DrawToScreen(sprite);
 
-  }, [display, frame]);
+  }, [display, frame, font]);
 
   return (
     <></>

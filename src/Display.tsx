@@ -42,7 +42,7 @@ export const Display = ({width, height, screen}: DisplayProps) => {
   return (
     <>
       <div>
-        <canvas style={{backgroundColor: "black", padding: 8}} id={'canvas'} ref={canvasRef}></canvas>
+        <canvas style={{backgroundColor: "black", padding: 8, imageRendering: "pixelated",}} id={'canvas'} ref={canvasRef}></canvas>
       </div>
       {screen({width, height, sprite, display})}
     </>

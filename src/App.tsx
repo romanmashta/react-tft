@@ -2,6 +2,7 @@ import './App.css'
 import {GeoIp} from "./GeoIp.tsx";
 import {Display} from "./Display.tsx";
 import {Cat} from "./Cat.tsx";
+import 'buffer'
 
 function App() {
   return <>
