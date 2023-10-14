@@ -5,10 +5,10 @@ import {Cat} from "./Cat.tsx";
 import 'buffer'
 
 function App() {
-  return <>
-    <Display width={240} height={536} screen={GeoIp}/>
-    {/*<Display width={320} height={170} screen={Cat}/>*/}
-  </>
+  return <div style={{display: "flex", alignItems: "flex-end"}}>
+    <Display width={240} height={536} Screen={GeoIp}/>
+    {/*<Display width={320} height={170} Screen={Cat}/>*/}
+  </div>
 }
 
 export default App

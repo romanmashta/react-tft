@@ -14,10 +14,10 @@ export type ScreenProps = {
 type DisplayProps = {
   width: number;
   height: number;
-  screen: (props: ScreenProps) => React.ReactElement;
+  Screen: (props: ScreenProps) => React.ReactElement;
 };
 
-export const Display = ({width, height, screen}: DisplayProps) => {
+export const Display = ({width, height, Screen}: DisplayProps) => {
   const [sprite, setSprite] = useState<TFT_eSprite | undefined>(undefined);
   const [display, setDisplay] = useState<DisplayContext | undefined>(undefined);
 
@@ -39,12 +39,14 @@ export const Display = ({width, height, screen}: DisplayProps) => {
     }
   }, canvasRef);
 
+  const screenProps = {width, height, sprite, display};
+
   return (
     <>
       <div>
         <canvas style={{backgroundColor: "black", padding: 8, imageRendering: "pixelated",}} id={'canvas'} ref={canvasRef}></canvas>
       </div>
-      {screen({width, height, sprite, display})}
+      <Screen {...screenProps}/>
     </>
   )
 }
