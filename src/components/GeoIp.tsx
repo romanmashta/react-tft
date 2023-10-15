@@ -3,8 +3,8 @@ import {ani} from "./ani.ts";
 import {NotoSansBold36} from "./notoSansBold36.ts";
 import {NotoSansMonoSCB20} from "./notoSansMonoSCB20.ts";
 import {Latin_Hiragana_24} from "./latinHiragana24.ts";
-import {ScreenProps} from "./Display.tsx";
-import {useFrameCounter} from "./UseFrameCounter.tsx";
+import {ScreenProps} from "../Display.tsx";
+import {useFrameCounter} from "../UseFrameCounter.tsx";
 
 import segments from '/DSEG7.ttf';
 import {useFont} from "tft-espi-wasm";
@@ -38,7 +38,7 @@ export const GeoIp = ({display, sprite}: ScreenProps) => {
   const httpCode2 = 200;
 
   useEffect(() => {
-    if (!display || !sprite) return;
+    if (!display || !sprite || !font) return;
 
     const n = frame % 45;
     const fromTop = 38;

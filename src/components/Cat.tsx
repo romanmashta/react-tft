@@ -1,7 +1,7 @@
-import {ScreenProps} from "./Display.tsx";
-import {useFrameCounter} from "./UseFrameCounter.tsx";
+import {ScreenProps} from "../Display.tsx";
+import {useFrameCounter} from "../UseFrameCounter.tsx";
 import {useEffect} from "react";
-import {logo2, framesNumber, aniHeigth, aniWidth} from "./cat.ts";
+import {logo2, framesNumber, aniHeigth, aniWidth} from "./logo2.ts";
 
 const xt=230;
 const yt=8;
