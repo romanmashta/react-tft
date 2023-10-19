@@ -1,8 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import {Renderer} from "./core/renderer.ts";
+import {useEffect} from "react";
+import {useFrameCounter} from "./UseFrameCounter.tsx";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <App />
-)
+const App = () => {
+  const frame = useFrameCounter(1);
+
+  useEffect(() => {
+    console.log("Hello from useEffect! " + frame);
+  }, [frame]);
+
+  return (
+    <label text={frame}/>
+  );
+}
+
+Renderer.render(<App/>)

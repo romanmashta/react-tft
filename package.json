@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-reconciler": "^0.29.0",
     "tft-espi-wasm": "1.0.0",
     "yoga-layout": "^2.0.0"
   },
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "@types/react-reconciler": "^0.28.6",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",

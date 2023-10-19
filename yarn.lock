@@ -883,6 +883,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-reconciler@^0.28.6":
+  version "0.28.6"
+  resolved "https://registry.yarnpkg.com/@types/react-reconciler/-/react-reconciler-0.28.6.tgz#8016038940cb0c12b54f422f41bd637d05aa4123"
+  integrity sha512-NlilRDg7yjtFX568NA046OiHWbz5EKM1q5FSXi2GP7WKyU+Vem4NJQcG+ZaMiWotyPiYqkIb6NKJkFuplbchAA==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^18.2.15":
   version "18.2.25"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.25.tgz#99fa44154132979e870ff409dc5b6e67f06f0199"
@@ -3067,6 +3074,14 @@ react-is@^18.0.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
+
+react-reconciler@^0.29.0:
+  version "0.29.0"
+  resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.29.0.tgz#ee769bd362915076753f3845822f2d1046603de7"
+  integrity sha512-wa0fGj7Zht1EYMRhKWwoo1H9GApxYLBuhoAuXN0TlltESAjDssB+Apf0T/DngVqaMyPypDmabL37vw/2aRM98Q==
+  dependencies:
+    loose-envify "^1.1.0"
+    scheduler "^0.23.0"
 
 react-refresh@^0.14.0:
   version "0.14.0"
